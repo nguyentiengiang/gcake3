@@ -6,7 +6,8 @@
         <li><?= $this->Html->link(__('List Category'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Category'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Product'), ['controller' => 'Product', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product'), ['controller' => 'Product', 'action' => 'add']) ?> </li>
+        <li><?php //echo $this->Html->link(__('New Product'), ['controller' => 'Product', 'action' => 'add']) ?> </li>
+        <li><?= $this->Link->makeAddUrl('Tạo sản phẩm', ['controller' => 'Product', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="category view large-9 medium-8 columns content">
@@ -30,7 +31,7 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Product') ?></h4>
+        <h4><?= __('Related Products') ?></h4>
         <?php if (!empty($category->product)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
