@@ -25,3 +25,4 @@ php "%lib%cake.php" %*
 echo.
 
 exit /B %ERRORLEVEL%
+
