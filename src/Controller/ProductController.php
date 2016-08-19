@@ -13,6 +13,11 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 class ProductController extends AppController
 {
     
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Csrf');
+    }
+    
     /**
      * Index method
      *
@@ -20,7 +25,9 @@ class ProductController extends AppController
      */
     public function index()
     {
-        $pro_list = $this->Product->find('all')->contain(['Category']);
+        $pro_list = $this->Product->find('all')
+                ->where(['is_delete' => 0])
+                ->contain(['Category']);
         $product = $this->paginate($pro_list, [
             'limit' => 2,
             'maxLimit' => 100
@@ -40,7 +47,8 @@ class ProductController extends AppController
     public function view($id = null)
     {
         $product = $this->Product->get($id, [
-            'contain' => ['Category'],       
+            'contain' => ['Category'],
+            'conditions' => ['is_delete' => 0]
         ]);
         
         $this->set('product', $product);
@@ -68,7 +76,7 @@ class ProductController extends AppController
         $query = TableRegistry::get('category')->find("list");
         $this->set('category', $query->toArray());
         
-        $this->set('statusArr', [0 => 'Ẩn', 1 => 'Hiện']);
+        $this->set('isHiddenArr', [0 => 'Ẩn', 1 => 'Hiện']);
         
         $this->set(compact('product'));
         $this->set('_serialize', ['product']);
@@ -85,7 +93,7 @@ class ProductController extends AppController
     {
         $product = $this->Product->get($id, [
             'conditions' => ['is_delete !=' => 1],
-            'contain' => []
+            'contain' => ['Category']
         ]);
         
 //        if (empty($product)) {

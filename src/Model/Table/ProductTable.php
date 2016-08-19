@@ -94,15 +94,15 @@ class ProductTable extends Table
     }
     
     /**
-     * Delete by hidden status = 0
+     * Delete by set is_delete = 1
      * 
      * @param \Cake\Datasource\EntityInterface $entity
      * @param type $options
      */
     public function delete(\Cake\Datasource\EntityInterface $entity, $options = array()) {
-//        parent::delete($entity, $options);
-        $entity->is_delete = 0;
-        $this->save($entity);
+        parent::delete($entity, $options);
+        $entity->is_delete = 1;
+        return $this->save($entity);        
     }
     
 }

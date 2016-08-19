@@ -11,6 +11,11 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Csrf');
+    }
+    
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
         $this->Auth->allow(['add', 'logout']);
