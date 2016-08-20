@@ -34,9 +34,17 @@ class CategoryController extends AppController
     public function view($id = null)
     {
         $category = $this->Category->get($id, [
-            'contain' => ['Product']
+//            'contain' => ['Product']
         ]);
 
+        $productByCategory = \Cake\ORM\TableRegistry::get('product')->find('all')
+                ->select(['id', 'name', 'image', 'prize'])
+                ->where(['category_id' => $id])->toList();
+        
+        $category->product = $productByCategory;
+        
+//        debug($category);die;
+        
         $this->set('category', $category);
         $this->set('_serialize', ['category']);
     }

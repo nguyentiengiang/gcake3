@@ -39,10 +39,12 @@
                 <th><?= __('Name') ?></th>
                 <th><?= __('Prize') ?></th>
                 <th><?= __('Image') ?></th>
+<?php /*        
                 <th><?= __('Details') ?></th>
                 <th><?= __('Is Delete') ?></th>
                 <th><?= __('Is Hidden') ?></th>
                 <th><?= __('Category Id') ?></th>
+*/ ?>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($category->product as $product): ?>
@@ -51,10 +53,12 @@
                 <td><?= h($product->name) ?></td>
                 <td><?= h($product->prize) ?></td>
                 <td><?= h($product->image) ?></td>
+<?php /* 
                 <td><?= h($product->details) ?></td>
                 <td><?= h($product->is_delete) ?></td>
                 <td><?= h($product->is_hidden) ?></td>
                 <td><?= h($product->category_id) ?></td>
+*/ ?>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Product', 'action' => 'view', $product->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Product', 'action' => 'edit', $product->id]) ?>
