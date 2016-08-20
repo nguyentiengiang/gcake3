@@ -38,8 +38,8 @@ class CategoryController extends AppController
         ]);
 
         $productByCategory = \Cake\ORM\TableRegistry::get('product')->find('all')
-                ->select(['id', 'name', 'image', 'prize'])
-                ->where(['category_id' => $id])->toList();
+                ->select(['id', 'name', 'image', 'prize', 'is_hidden'])
+                ->where(['category_id' => $id, 'is_delete' => 0])->toList();
         
         $category->product = $productByCategory;
         

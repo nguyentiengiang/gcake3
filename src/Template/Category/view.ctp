@@ -39,10 +39,11 @@
                 <th><?= __('Name') ?></th>
                 <th><?= __('Prize') ?></th>
                 <th><?= __('Image') ?></th>
+                <th><?= __('Is Hidden') ?></th>
 <?php /*        
                 <th><?= __('Details') ?></th>
                 <th><?= __('Is Delete') ?></th>
-                <th><?= __('Is Hidden') ?></th>
+                
                 <th><?= __('Category Id') ?></th>
 */ ?>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -52,7 +53,8 @@
                 <td><?= h($product->id) ?></td>
                 <td><?= h($product->name) ?></td>
                 <td><?= h($product->prize) ?></td>
-                <td><?= h($product->image) ?></td>
+                <td><img src='<?= h($product->image) ?>'/></td>
+                <td><?= h(($product->is_hidden == 0) ? 'Hiện' : 'Ẩn') ?></td>
 <?php /* 
                 <td><?= h($product->details) ?></td>
                 <td><?= h($product->is_delete) ?></td>
