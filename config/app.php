@@ -342,6 +342,9 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
-        'timeout' => 60
+        'timeout' => 1440, // The session will timeout after 30 minutes of inactivity
+        'cookieTimeout' => 1440, // The session cookie will live for at most 24 hours, this does not effect session timeouts
+        'checkAgent' => false,
+        'autoRegenerate' => true, // causes the session expiration time to reset on each page load
     ],
 ];
